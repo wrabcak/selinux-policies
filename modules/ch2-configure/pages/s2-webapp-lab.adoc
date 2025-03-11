@@ -95,7 +95,7 @@ system_u:object_r:httpd_sys_content_t:s0 ..
 +
 [source,subs="verbatim,quotes"]
 --
-$ *sudo chcon -t user_home_t /var/www/html/\**
+$ *sudo chcon -R -t user_home_t /var/www/html/*
 --
 +
 Remember that, if you move files between different file systems, they do not retain their permissions and SELinux context, but inherit them from the destination directory as they would with a copy operation.
@@ -149,7 +149,7 @@ Notice that the event refers to the `httpd` executable and to the `index.html` f
 +
 [source,subs="verbatim,quotes"]
 --
-$ *restorecon -fv /var/www/html/\**
+$ *sudo restorecon -RvF /var/www/html/*
 Relabeled /var/www/html/hello.php from unconfined_u:object_r:user_home_t:s0 to system_u:object_r:httpd_sys_content_t:s0
 Relabeled /var/www/html/index.html from unconfined_u:object_r:user_home_t:s0 to system_u:object_r:httpd_sys_content_t:s0
 Relabeled /var/www/html/quotes.php from unconfined_u:object_r:user_home_t:s0 to system_u:object_r:httpd_sys_content_t:s0
